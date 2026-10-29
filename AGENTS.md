@@ -16,6 +16,10 @@
    ```
 5. Release notes（**中文**）必须包含：每个文件的 sha256/size 表格、数据来源与构建方式、**许可声明**（衍生数据写明上游与许可；GPL 数据须注明「可选下载，应用本体 MIT 不打包」）
 
+Gitee 镜像（gitee.com/feelime/distribution）同步同一份 git 文档；Release 用 API 建
+（token 走 oh-my-term secrets，不落仓库），附件接口**单文件上限 100MB**，超限文件
+按上面的压缩规则处理。
+
 ## 更新一个已有频道
 
 1. 构建新产物，核对 sha256/size
