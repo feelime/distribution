@@ -2,10 +2,10 @@
 
 Feelime 模型与词典数据的分发仓库：体积大的数据产物（词表、语音/手写模型）**不打进 APK**，从这里的 Release 附件按版本下载，app 端 sha256 校验后落盘挂载。
 
-## 布局约定
+## 布局约定（参考 podic 词典包更新）
 
-- 每个 Release = 一份数据产物集，tag 形如 `<产物名>-<版本>`（如 `wubi86-1.0.0`）
-- 附件为产物文件本体；Release notes 记录来源、sha256 与许可
+- 每个数据产物一个**固定 tag 频道**（tag 名不含版本号，如 `wubi86`），Release 永远持有当前最新版：产物更新时原地替换附件、同步更新 metainfo
+- Release 附带一个 **metainfo json**（如 `wubi86-metainfo.json`），顶层即 `version` + `files[]`（file/sha256/size/url）+ notes；app 更新时**先下载 metainfo**，比对版本后再按 `files[].url` 逐个下载校验
 - 下载支持 gh-proxy 加速（任意 `https://gh-proxy.com/` 前缀拼接 Release 附件 URL 即可）
 
 ## 许可
